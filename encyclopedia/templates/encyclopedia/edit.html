@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    Wiki: Edit {{ EntryTitle }}
+{% endblock %}
+
+{% block body %}
+        <h1>Edit '{{ EntryTitle }}' </h1>
+    <br>
+    <!-- Form where entry can be edited using Markdown language -->
+    <div class="form-group">
+        <form action="{% url 'entry_handler' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <br>
+            <!-- Button to submit and save editing -->
+            <div class="form-group row" style="margin-left:-17%; text-align:right">
+                <div class="col-sm-7">
+                    <input type="submit" value="Save" class="btn btn-success rounded-1" />
+            </div>
+        </form>
+    </div>
+{% endblock %}

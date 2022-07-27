@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <!-- Header that denotes to the user what their input value is for their query -->
+    <h2> Searching for {{ input }}</h2>
+    <!-- List of search results for that have been populated into the Python list SubstringResults[] -->
+    <ul>
+        {% for result in SubstringResults %}
+            <a href="/wiki/{{ result }}" ><li>{{ result }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

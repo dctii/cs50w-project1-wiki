@@ -1,0 +1,34 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    New Entry
+{% endblock %}
+
+{% block body %}
+    <!-- Conditional title that appears after information is passed and it is shown that an entry with this title already exist -->
+    {% if exists %}
+        <h2>Unable to create new page entry!</h2>
+    <!-- The default title when there is no information passed that may meet the condition that a pre-existing entry title is present -->
+    {% else %}
+        <h1>New Encyclopedia Page Entry</h1>
+    {% endif %}
+    <!-- An error prompt that appears after information is passed and it is shown that an entry with this title already exist -->
+    {% if exists %}
+        <div role="alert" class="alert alert-danger">
+            <span style="color:darkred">There is already an entry with this name in the encyclopedia. Try another name!</span>
+        </div>
+    {% endif %}
+    <br>
+    <!-- Form for creating a title and content for a new entry-->
+    <div class="form-group">
+        <form action="{% url 'entry_handler' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <br>
+            <div class="form-group row" style="margin-left:-17%; text-align:right">
+                <div class="col-sm-7">
+                    <!-- A button that submits and saves the information for the new entry -->
+                    <input type="submit" value="Save" class="btn btn-success text-light rounded-1" />
+                </div>
+        </form>
+    </div>
+{% endblock %}

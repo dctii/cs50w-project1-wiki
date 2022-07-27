@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ EntryTitle }}
+{% endblock %}
+
+{% block body %}
+    <!-- Encyclopedia entry content -->
+    <div>
+    <!-- Django security filter, "safe", is added to tell Django to accept the HTML content -->
+    {{ content|safe }}
+    </div>
+    <!-- Button where the user can jump to edit the entry -->
+    <div>
+    <a href="/wiki/{{ EntryTitle }}/edit" role="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+    </div>
+{% endblock %}
